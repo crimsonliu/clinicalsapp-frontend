@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export class Home extends Component {
     
@@ -30,6 +31,8 @@ export class Home extends Component {
                     <tbody>
                     {this.state.patientData.map(patient=><RowCreator item={patient} />)}
                     </tbody>
+                    <br />
+                    <Link to={'/addPatient'}>Register Patient</Link>
                 </table>
             </div>
         )
@@ -38,10 +41,16 @@ export class Home extends Component {
 
 export class RowCreator extends Component {
     render() {
+        const patient = this.props.item;
         return (
-            <div>
-                
-            </div>
+                <tr>
+                    <td>{patient.id}</td>
+                    <td>{patient.firstName}</td>
+                    <td>{patient.lastName}</td>
+                    <td>{patient.age}</td>
+                    <td><Link to={'patientDetails/' + patient.id}>Add Data</Link></td>
+                    <td><Link to={'analyze/' + patient.id}>Analyze</Link></td>
+                </tr>
         )
     }
 }
