@@ -55,5 +55,4 @@ export class RowCreator extends Component {
     }
 }
 
-
 export default Home
